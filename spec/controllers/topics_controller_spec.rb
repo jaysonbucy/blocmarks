@@ -70,6 +70,22 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
 
+    describe "PUT update" do
+      it "updates topic with expected attributes" do
+        new_title = "This is a new title"
+        put :update, params: { id: topic.id, topic: { title: new_title }}
+        updated_topic = assigns(:topic)
+        expect(updated_topic.id).to eq(topic.id)
+        expect(updated_topic.title).to eq(new_title)
+      end
+
+      it "redirects to the updated topic" do
+        new_title = "This is a new title"
+        put :update, params: { id: topic.id, topic: { title: new_title }}
+        expect(response).to redirect_to [topic]
+      end
+    end
+
     describe "POST create" do
       it "increases the number of topic by 1" do
         expect( -> { post :create, params: { topic: { title: built_topic.title }}} ).to change(Topic,:count).by(1)
