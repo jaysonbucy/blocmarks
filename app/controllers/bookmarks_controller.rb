@@ -2,14 +2,9 @@ class BookmarksController < ApplicationController
 
   before_action :authenticate_user!
 
-  def show
-    @bookmark = Bookmark.find(params[:id])
-  end
-
   def new
     @topic = Topic.find(params[:topic_id])
     @bookmark = Bookmark.new(:topic => @topic)
-    #redirect_back(fallback_location: root_path)
   end
 
   def create
@@ -27,8 +22,7 @@ class BookmarksController < ApplicationController
 
   def edit
     @topic = Topic.find(params[:topic_id])
-    @bookmark = @topic.bookmarks.find(:id)
-    binding.pry
+    @bookmark = Bookmark.find(params[:id])
   end
 
   def update

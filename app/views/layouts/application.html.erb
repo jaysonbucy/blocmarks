@@ -11,9 +11,7 @@
   <body>
     <div class="header-control">
       <% if user_signed_in? %>
-        Signed in as: <strong><%= current_user.username %></strong>
-        <br>
-        <%= link_to "My Blocmarks", edit_user_registration_path, :class => 'navbar-link' %> |
+        <%= link_to current_user.username, edit_user_registration_path, :class => 'navbar-link' %> |
         <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
       <% else %>
         <%= link_to "Sign Up", new_user_registration_path, :class => 'navbar-link'  %> -
