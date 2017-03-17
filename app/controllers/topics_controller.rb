@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
     @topics = Topic.all
   end
@@ -26,6 +26,18 @@ class TopicsController < ApplicationController
     else
       flash.now[:alert] = "There was an error saving the topic. Please try again."
       render :new
+    end
+  end
+
+  def update
+    @topic = Topic.find(params[:id])
+
+    if @topic.update(topic_params)
+      flash[:notice] = "Topic was updated."
+      redirect_to [@topic]
+    else
+      flash.now[:alert] = "There was an error saving the topic. Please try again."
+      render :edit
     end
   end
 

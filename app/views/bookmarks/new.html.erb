@@ -1,0 +1,19 @@
+<h1>Share a new bookmark</h1>
+
+<div>
+  <%= form_for [@topic, @bookmark] do |b| %>
+    <div class="form-group">
+      <%= b.label :url %>
+      <%= b.text_field :url, class: 'form-control', placeholder: "Enter bookmark url" %>
+    </div>
+    <%= b.submit "Save", class: 'btn btn-success' %>
+  <% end %>
+</div>
+
+<br>
+
+<div class="strict-link">
+  <button>
+    <%= link_to 'Back', :back %>
+  </button>
+</div>

@@ -1,11 +1,31 @@
 <h1><%= @topic.title %></h1>
-<%= render @topic.bookmarks %>
-<br>
+
 <div>
-  <% if current_user.id = @topic.user_id %>
-  <%= link_to "Delete topic", [@topic], method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this topic?' } %>
+  <% @topic.bookmarks.each do |b| %>
+    <button><%= link_to 'E', edit_topic_bookmark_path(b.topic_id, b.id) %></button>
+    <button><%= link_to 'D', [@topic, b], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' } %></button>
+    <%= render b %>
+  <% end %>
+  <button>
+    <%= link_to 'New Bookmark', new_topic_bookmark_path(@topic.id) %>
+  </button>
+</div>
+
+<br>
+
+<div>
+  <% if current_user.id == @topic.user_id %>
+    <button>
+      <%= link_to 'Delete Topic', [@topic], method: :delete, class: 'strict-link', data: { confirm: 'Are you sure you want to delete this topic?' } %>
+    </button>
+    <button>
+      <%= link_to 'Edit Topic', edit_topic_path %>
+    </button>
   <% end %>
 </div>
+
 <div class="strict-link">
-  <%= link_to 'Back', root_path %>
+  <button>
+    <%= link_to 'Back', :back %>
+  </button>
 </div>
