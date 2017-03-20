@@ -4,9 +4,6 @@
     <%= render @topics %>
   </div>
 </div>
-<br>
 <div>
-  <button>
-    <%= link_to "New Topic", new_topic_path, class: 'btn btn-success' %>
-  </button>
+  <%= link_to '<i class="fa fa-plus" aria-hidden="true"></i>'.html_safe, new_topic_path, class: 'btn btn-success' %>
 </div>
