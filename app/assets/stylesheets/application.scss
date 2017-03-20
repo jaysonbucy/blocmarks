@@ -2,20 +2,50 @@
 @import "topics";
 
 body{
-  background-color: LightSteelBlue;
-  color: DarkSlateGray;
+  background-color: #FCFFF5;
 }
 
-a{
-  color: DarkBlue;
+h1{
+  color: #3E606F;
+}
+
+hr{
+  color: #193441;
+  border-top: 3px double;
+}
+
+i{
+  color: #193441;
+}
+
+a,
+a:visited{
+  color: #91AA9D;
   text-decoration: none;
 }
 
-.header-control{
-  text-align: right;
-  font-size: 20px;
+.submit-button{
+  background-color: inherit;
+  color: #91AA9D;
+  border-radius: 15px;
+
+  a,
+  a:visited {
+    color: #91AA9D
+  }
 }
 
-.strict-link a{
-  color: MediumBlue;
+.url-box{
+  font-size: 14px;
+}
+
+.header-control{
+  color: #3E606F;
+  text-align: right;
+  font-size: 20px;
+
+  a,
+  a:visited{
+    color: #3E606F;
+  }
 }

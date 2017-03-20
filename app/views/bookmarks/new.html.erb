@@ -6,14 +6,10 @@
       <%= b.label :url %>
       <%= b.text_field :url, class: 'form-control', placeholder: "Enter bookmark url" %>
     </div>
-    <%= b.submit "Save", class: 'btn btn-success' %>
+    <%= b.submit "Save", class: 'submit-button' %>
   <% end %>
 </div>
 
 <br>
 
-<div class="strict-link">
-  <button>
-    <%= link_to 'Back', :back %>
-  </button>
-</div>
+<%= link_to '<i class="fa fa-chevron-left fa-lg" aria-hidden="true"></i>'.html_safe, :back %>
