@@ -9,6 +9,7 @@ class IncomingController < ApplicationController
 
     if @user.nil?
       @user = User.new(email: @email, password: 'password')
+      @user.save!
     end
 
     if @topic.nil?
@@ -19,5 +20,5 @@ class IncomingController < ApplicationController
 
     head 200
   end
-  
+
 end
