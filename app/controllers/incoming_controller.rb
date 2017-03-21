@@ -9,8 +9,6 @@ class IncomingController < ApplicationController
 
     if @user?
       @user = User.new(email: @email, password: 'password')
-      @user.skip_confirmation!
-      @user.save!
     end
 
     if @topic?
