@@ -8,7 +8,8 @@ class IncomingController < ApplicationController
     @url = params["body-plain"]
 
     if @user.nil?
-      @user = User.new(email: @email, password: 'password')
+      @username = get_user_id(@email)
+      @user = User.new(email: @email, username: @username, password: 'password')
       @user.save!
     end
 
@@ -19,6 +20,11 @@ class IncomingController < ApplicationController
     @bookmark = @topic.bookmarks.create(url: @url)
 
     head 200
+  end
+
+  private
+  def get_user_id(email)
+    email.split("@")[0]
   end
 
 end
