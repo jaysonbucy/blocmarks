@@ -19,4 +19,5 @@ class IncomingController < ApplicationController
 
     head 200
   end
+  
 end
