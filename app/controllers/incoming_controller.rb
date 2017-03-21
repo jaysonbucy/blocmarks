@@ -7,11 +7,11 @@ class IncomingController < ApplicationController
     @topic = Topic.find_by(params[:subject])
     @url = params["body-plain"]
 
-    if @user?
+    if @user.nil?
       @user = User.new(email: @email, password: 'password')
     end
 
-    if @topic?
+    if @topic.nil?
       @topic = @user.topics.create(title: params[:subject])
     end
 
