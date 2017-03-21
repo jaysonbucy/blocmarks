@@ -4,7 +4,7 @@ class IncomingController < ApplicationController
   def create
     @email = params[:sender]
     @user = User.find_by(email: @email)
-    @topic = Topic.find_by(params[:subject])
+    @topic = Topic.find_by(title: params[:subject])
     @url = params["body-plain"]
 
     if @user.nil?
