@@ -3,6 +3,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :topics
+  has_many :bookmarks
 
   validates :email,
             presence: true,
