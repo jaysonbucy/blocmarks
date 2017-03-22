@@ -17,7 +17,7 @@ class IncomingController < ApplicationController
       @topic = @user.topics.create(title: params[:subject])
     end
 
-    @bookmark = @topic.bookmarks.create(user_id: @user, url: @url)
+    @bookmark = @topic.bookmarks.create(user_id: @user.id, url: @url)
 
     head 200
   end
