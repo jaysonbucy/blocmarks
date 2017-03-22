@@ -3,8 +3,17 @@
 <div>
   <% @topic.bookmarks.each do |b| %>
     <% if b.user == current_user %>
-    <%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_topic_bookmark_path(b.topic_id, b.id), { :title => "Edit Bookmark" } %>
-    <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, [@topic, b], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
+      <%= link_to '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>'.html_safe, edit_topic_bookmark_path(b.topic_id, b.id), { :title => "Edit Bookmark" } %>
+      <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, [@topic, b], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
+    <% end %>
+    <% if like = current_user.liked(b) %>
+      <%= link_to [@topic, b, like], method: :delete do %>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= link_to [@topic, b, Like.new], method: :post do %>
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+      <% end %>
     <% end %>
     <%= render b %>
   <% end %>
