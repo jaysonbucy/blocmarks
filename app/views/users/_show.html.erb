@@ -1,0 +1,13 @@
+<h1>My Bookmarks</h1>
+<% current_user.bookmarks.each do |b| %>
+  <%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, [b.topic, b], method: :delete, data: { confirm: 'Are you sure you want to delete this bookmark?' } %>
+  <%= render "/bookmarks/bookmark", bookmark: b %>
+<% end %>
+<br>
+<h1>My Liked Bookmarks</h1>
+<% current_user.likes.each do |l| %>
+  <%= link_to l.bookmark.topic do %>
+    <i class="fa fa-search" aria-hidden="true"></i>
+  <% end %>
+  <%= render "/bookmarks/bookmark", bookmark: l.bookmark %>
+<% end %>
